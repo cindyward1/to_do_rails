@@ -1,0 +1,16 @@
+<h1>Welcome to Cindy's To Do List</h1>
+<h3>Here are the tasks that need to be done</h3>
+<ol> <% @tasks_todo.each do |task| %>
+  <li><form action="/tasks/<%= task.id %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input name="task[done]" type="hidden" value="true">
+      <button>Mark as done</button>&nbsp&nbsp&nbsp<%= task.name %>&nbsp&nbsp&nbspDue date = <%= task.due_date %>
+  </li>
+  <% end %>
+</ol>
+<h3>Here are the tasks that have been completed</h3>
+<ul> <% @tasks_done.each do |task| %>
+  <li> <%= task.name %> </li>
+  <% end %>
+</ul>
+<p><a href="/tasks/new">Click here</a> to add a new task</p>
